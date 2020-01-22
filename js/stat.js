@@ -15,25 +15,46 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
-window.renderStatistics = function (ctx) {
+window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X+GAP, CLOUD_Y+GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
+  // var playerIndex = 0;
+  // var playerName = 'Я';
+  // var players = ['Я', 'Кекс', 'Катя', 'Игорь'];
+
   ctx.fillStyle = 'red';
-  ctx.fillText('Я', CLOUD_X+GAP, CLOUD_HEIGHT);
-  ctx.fillRect(CLOUD_X+GAP, CLOUD_HEIGHT-FONT_GAP, BAR_WIDTH, -barHeight);
 
-  ctx.fillStyle = 'blue';
-  ctx.fillText('Кекс', CLOUD_X+GAP+BAR_WIDTH+BAR_GAP, CLOUD_HEIGHT);
-  ctx.fillRect(CLOUD_X+GAP+BAR_WIDTH+BAR_GAP, CLOUD_HEIGHT-FONT_GAP, BAR_WIDTH, -barHeight);
+  for (var i=0; i < players.length ; i++) {
+    ctx.fillText(players[i], CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*i, CLOUD_HEIGHT);
+  ctx.fillRect(CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*i, CLOUD_HEIGHT-FONT_GAP, BAR_WIDTH, -barHeight);
 
-  ctx.fillStyle = 'lightgrey';
-  ctx.fillText('Катя', CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*2, CLOUD_HEIGHT);
-  ctx.fillRect(CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*2, CLOUD_HEIGHT-FONT_GAP, BAR_WIDTH, -barHeight);
+  };
 
-  ctx.fillStyle = 'grey';
-  ctx.fillText('Игорь', CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*3, CLOUD_HEIGHT);
-  ctx.fillRect(CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*3, CLOUD_HEIGHT-FONT_GAP, BAR_WIDTH, -barHeight);
+  // ctx.fillStyle = 'red';
+  // ctx.fillText(playerName, CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*playerIndex, CLOUD_HEIGHT);
+  // ctx.fillRect(CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*playerIndex, CLOUD_HEIGHT-FONT_GAP, BAR_WIDTH, -barHeight);
+
+  // var playerIndex = 1;
+  // var playerName = 'Кекс';
+
+  // ctx.fillStyle = 'blue';
+  // ctx.fillText(playerName, CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*playerIndex, CLOUD_HEIGHT);
+  // ctx.fillRect(CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*playerIndex, CLOUD_HEIGHT-FONT_GAP, BAR_WIDTH, -barHeight);
+
+  // var playerIndex = 2;
+  // var playerName = 'Катя';
+
+  // ctx.fillStyle = 'lightgrey';
+  // ctx.fillText(playerName, CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*playerIndex, CLOUD_HEIGHT);
+  // ctx.fillRect(CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*playerIndex, CLOUD_HEIGHT-FONT_GAP, BAR_WIDTH, -barHeight);
+
+  // var playerIndex = 3;
+  // var playerName = 'Игорь';
+
+  // ctx.fillStyle = 'grey';
+  // ctx.fillText(playerName, CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*playerIndex, CLOUD_HEIGHT);
+  // ctx.fillRect(CLOUD_X+GAP+(BAR_WIDTH+BAR_GAP)*playerIndex, CLOUD_HEIGHT-FONT_GAP, BAR_WIDTH, -barHeight);
 
   ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
